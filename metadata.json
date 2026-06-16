@@ -1,0 +1,6 @@
+{
+  "name": "WWE Chrono Network",
+  "description": "Plataforma de streaming cronológica de WWE con interfaz interactiva inspirada en el Dashboard de Xbox Series X/S.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
