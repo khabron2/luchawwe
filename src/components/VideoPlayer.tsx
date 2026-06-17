@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, X, RotateCcw, ChevronRight, ChevronLeft, Volume2, Maximize, AlertCircle, CheckCircle, Info } from 'lucide-react';
+import { Play, Pause, X, RotateCcw, ChevronRight, ChevronLeft, Volume2, Maximize, AlertCircle, CheckCircle, Info, Check } from 'lucide-react';
 import { WWEEvent } from '../data';
 
 interface VideoPlayerProps {
@@ -207,14 +207,15 @@ export default function VideoPlayer({
           <div className="flex items-center gap-4">
             <button
               onClick={() => onMarkAsWatched(event.id, !event.watched)}
-              className={`flex items-center gap-1 text-xs px-3 py-1.5 rounded-md transition-all font-medium ${
+              className={`p-2.5 rounded-full transition-all flex items-center justify-center cursor-pointer ${
                 event.watched 
-                  ? 'bg-[#107C10]/20 text-[#107C10] border border-[#107C10]/40' 
-                  : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300'
+                  ? 'bg-[#107C10] text-white shadow-[0_0_15px_rgba(16,124,16,0.6)]' 
+                  : 'bg-zinc-800 border border-zinc-700 text-zinc-400 hover:bg-zinc-700 hover:text-white'
               }`}
+              title={event.watched ? 'Marcar como no visto' : 'Marcar como visto'}
+              aria-label={event.watched ? 'Marcar como no visto' : 'Marcar como visto'}
             >
-              <CheckCircle size={14} className={event.watched ? 'fill-current' : ''} />
-              {event.watched ? 'Visto' : 'Marcar Visto'}
+              <Check size={16} strokeWidth={event.watched ? 3.5 : 2} />
             </button>
             
             <button

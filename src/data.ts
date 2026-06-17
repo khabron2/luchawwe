@@ -1,4 +1,13 @@
 import { SMACKDOWN_2001_OVERRIDES } from "./data_smackdown_2001";
+import { SMACKDOWN_2002_OVERRIDES } from "./data_smackdown_2002";
+import { SMACKDOWN_2003_OVERRIDES } from "./data_smackdown_2003";
+import { SMACKDOWN_2004_OVERRIDES } from "./data_smackdown_2004";
+import { SMACKDOWN_2005_OVERRIDES } from "./data_smackdown_2005";
+import { RAW_2001_OVERRIDES } from "./data_raw_2001";
+import { RAW_2002_OVERRIDES } from "./data_raw_2002";
+import { RAW_2003_OVERRIDES } from "./data_raw_2003";
+import { RAW_2004_OVERRIDES } from "./data_raw_2004";
+import { RAW_2005_OVERRIDES } from "./data_raw_2005";
 
 export interface WWEEvent {
   id: string;
@@ -174,8 +183,152 @@ export const STATIC_WWE_EVENTS: WWEEvent[] = [
     duration: "2h 50m",
     thumbnail: "https://static.wikia.nocookie.net/prowrestling/images/1/1b/Judgmentday01.jpg/revision/latest?cb=20090928132347",
     background: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
-    video_url: "https://www.youtube.com/embed/tM0Q8Wf3tL0",
+    video_url: "https://archive.org/download/05.-wwf-judgment-day-2001/05.%20WWF%20Judgment%20Day%20%282001%29.mp4",
     description: "WWE Judgment Day 2001 presenta el épico combate sin descalificación por el Campeonato de la WWF entre Stone Cold Steve Austin y The Undertaker, además del temible 'Chain Match' por el Campeonato Intercontinental entre Triple H y Kane.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-king-of-the-ring-2001",
+    title: "King of the Ring 2001",
+    show: "PPV",
+    date: "2001-06-24",
+    month: "Junio",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "King of the Ring",
+    duration: "2h 55m",
+    thumbnail: "https://tse3.mm.bing.net/th/id/OIP.jxQuFdDn-BE_HMUQUoT6BADREp?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    background: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/06%20WWF%20King%20Of%20The%20Ring%202001.mp4",
+    description: "WWE King of the Ring 2001 es un evento histórico que presenta la brutal y legendaria pelea callejera entre Kurt Angle y Shane McMahon. Además, Edge se consagra ganando la gran final del torneo del Rey de Ring, y Stone Cold Steve Austin defiende con ferocidad el Campeonato de la WWF en una electrizante Triple Amenaza frente a Chris Benoit y Chris Jericho.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-invasion-2001",
+    title: "Invasion 2001",
+    show: "PPV",
+    date: "2001-07-22",
+    month: "Julio",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "Invasion",
+    duration: "2h 48m",
+    thumbnail: "https://m.media-amazon.com/images/I/41JC0TSNEFL._AC_SY445_.jpg",
+    background: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/07%20WWF%20Invasion%202001.mp4",
+    description: "WWE Invasion 2001 marcó el caótico inicio de la guerra de marcas 'The Invasion', colisionando las superestrellas leales de la WWF contra la temible coalición WCW/ECW (The Alliance). En el estelar 'Inaugural Brawl', Stone Cold Steve Austin estremece al mundo de la lona traicionando sorpresivamente a la WWF para liderar las huestes invasoras.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-summerslam-2001",
+    title: "SummerSlam 2001",
+    show: "PPV",
+    date: "2001-08-19",
+    month: "Agosto",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "SummerSlam",
+    duration: "2h 58m",
+    thumbnail: "https://m.media-amazon.com/images/I/513ZDS1V9NL._AC_SY445_.jpg",
+    background: "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/08%20WWF%20SummerSlam%202001.mp4",
+    description: "WWE SummerSlam 2001 se celebra bajo la densa atmósfera de la invasión de la Alianza de WCW/ECW. The Rock colisiona contra Booker T en un electrizante estelar consagrándose Campeón de la WCW, mientras Kurt Angle y Stone Cold Steve Austin se baten en un sangriento encuentro por el Campeonato de la WWF. Además, Rob Van Dam y Jeff Hardy deslumbran la noche en una spectacular lucha de escaleras por el Campeonato Hardcore.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-unforgiven-2001",
+    title: "Unforgiven 2001",
+    show: "PPV",
+    date: "2001-09-23",
+    month: "Septiembre",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "Unforgiven",
+    duration: "2h 45m",
+    thumbnail: "https://upload.wikimedia.org/wikipedia/en/6/6d/Unforgiven_2001.jpg",
+    background: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/09%20WWF%20Unforgiven%202001.mp4",
+    description: "WWE Unforgiven 2001 es un evento sumamente emotivo e histórico celebrado poco después de los atentados del 11 de septiembre. Kurt Angle hace vibrar a su estado natal al derrotar de forma limpia y conmovedora a Stone Cold Steve Austin para coronarse Campeón de la WWF, celebrando en el ring junto a toda su familia y el roster técnico. Además, Christian y Edge colisionan por el Campeonato Intercontinental, y Rob Van Dam defiende su título Hardcore ante Chris Jericho.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-no-mercy-2001",
+    title: "No Mercy 2001",
+    show: "PPV",
+    date: "2001-10-21",
+    month: "Octubre",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "No Mercy",
+    duration: "2h 50m",
+    thumbnail: "https://images-na.ssl-images-amazon.com/images/I/517CA24S3JL._SY300_QL70_.jpg",
+    background: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/10%20WWF%20No%20Mercy%202001.mp4",
+    description: "WWE No Mercy 2001 presenta una noche repleta de hitos históricos de la Invasión. Chris Jericho alcanza la gloria máxima al derrotar al icónico The Rock para ganar su primer Campeonato Mundial de la WCW. En el estelar, Stone Cold Steve Austin retiene el Campeonato de la WWF en una espectacular Triple Amenaza frente a Kurt Angle y Rob Van Dam. Además, Edge y Christian se baten en una destructiva y memorable batalla de escaleras por el cetro Intercontinental.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-survivor-series-2001",
+    title: "Survivor Series 2001",
+    show: "PPV",
+    date: "2001-11-18",
+    month: "Noviembre",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "Survivor Series",
+    duration: "3h 00m",
+    thumbnail: "https://m.media-amazon.com/images/M/MV5BNmM3ZjBjYTctNGI1ZS00NDZmLTg1OGItNTlhYTM5NGVlNzQzXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    background: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/11%20WWF%20Survivor%20Series%202001.mp4",
+    description: "WWE Survivor Series 2001 es uno de los eventos más trascendentales de la historia de la lucha libre profesional, marcando la culminación absoluta de la saga 'The Invasion'. En el legendario combate de eliminación de cinco contra cinco 'Winner Take All', el Team WWF (The Rock, Chris Jericho, The Undertaker, Kane y Big Show) se enfrenta a la Alianza de WCW/ECW (Stone Cold Steve Austin, Kurt Angle, Rob Van Dam, Booker T y Shane McMahon) por el control total y definitivo de la industria.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-vengeance-2001",
+    title: "Vengeance 2001",
+    show: "PPV",
+    date: "2001-12-09",
+    month: "Diciembre",
+    year: 2001,
+    season: "PPV Especial",
+    episode: "Vengeance",
+    duration: "2h 46m",
+    thumbnail: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/2001Vengeance.jpg/250px-2001Vengeance.jpg",
+    background: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://archive.org/download/06-wwf-king-of-the-ring-2001/12%20WWF%20Vengeance%202001.mp4",
+    description: "WWE Vengeance 2001 pasa a la posteridad por coronar al primer Campeón Indiscutido en la historia del entretenimiento deportivo. Chris Jericho logra la hazaña más legendaria al derrotar en una misma noche tanto a The Rock por el Campeonato de la WCW como a Stone Cold Steve Austin por el Campeonato de la WWF. Además, The Undertaker y Rob Van Dam batallan brutalmente por el Campeonato Hardcore, y Jeff Hardy se enfrenta a su hermano Matt Hardy con Lita como árbitro especial.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-royal-rumble-2002",
+    title: "Royal Rumble 2002",
+    show: "PPV",
+    date: "2002-01-20",
+    month: "Enero",
+    year: 2002,
+    season: "PPV Especial",
+    episode: "Royal Rumble",
+    duration: "2h 48m",
+    thumbnail: "https://upload.wikimedia.org/wikipedia/en/f/f7/Royal_Rumble_2002.jpg",
+    background: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://www.youtube.com/embed/rVIsenK6U7w",
+    description: "WWE Royal Rumble 2002 es inmortalizado por el majestuoso regreso y victoria de Triple H en la tradicional Batalla Real tras superar una devastadora rotura de cuádriceps, eliminando a Kurt Angle en el tramo final. En el duelo por el Campeonato Indiscutido de la WWF, Chris Jericho retiene ante The Rock en una electrizante contienda. Además, Ric Flair derrota a Vince McMahon en una salvaje Pelea Callejera, y William Regal supera a Edge para colgarse el Campeonato Intercontinental.",
+    watched: false
+  },
+  {
+    id: "wwe-ppv-no-way-out-2002",
+    title: "No Way Out 2002",
+    show: "PPV",
+    date: "2002-02-17",
+    month: "Febrero",
+    year: 2002,
+    season: "PPV Especial",
+    episode: "No Way Out",
+    duration: "2h 39m",
+    thumbnail: "https://i.ebayimg.com/images/g/hZYAAOxyqUpQ9GWm/s-l640.jpg",
+    background: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+    video_url: "https://www.youtube.com/embed/q6_6XCy_4we",
+    description: "WWE No Way Out 2002 pasa a la posteridad por marcar el legendario y caótico debut de la nWo (New World Order) en la WWF, con Hollywood Hulk Hogan, Kevin Nash y Scott Hall sembrando el terror. En la asombrosa lucha estelar, Chris Jericho retiene astutamente el Campeonato Indiscutido de la WWF frente a Stone Cold Steve Austin tras una tumultuosa intervención. Además, Kurt Angle derrota a Triple H despojándolo de su derecho por el título en WrestleMania, y The Rock vence a The Undertaker en una colosal batalla de titanes.",
     watched: false
   }
 ];
@@ -795,13 +948,91 @@ export function parseEventFromUrl(url: string): WWEEvent {
   const episodeStr = `Episodio del ${formattedDay} de ${monthName}`;
   let description = `Transmisión original de WWE ${showLabel} transmitido el ${formattedDay} de ${monthName} de ${year}. Revive toda la acción auténtica en el ring, las batallas legendarias y las superestrellas icónicas de la era dorada del deporte de entretenimiento.`;
 
-  // Apply TMDB SmackDown Season 3 overrides
-  const override = SMACKDOWN_2001_OVERRIDES[cleanDateStr];
-  if (override) {
-    title = override.title;
-    description = override.description;
-    background = override.background;
-    thumbnail = override.thumbnail;
+  // Apply TMDB SmackDown Season 3 / Season 4 and RAW Season 9 overrides
+  if (show === 'SmackDown') {
+    if (year === 2001) {
+      const override = SMACKDOWN_2001_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        background = override.background;
+        thumbnail = override.thumbnail;
+      }
+    } else if (year === 2002) {
+      const override = SMACKDOWN_2002_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        background = override.background;
+        thumbnail = override.thumbnail;
+      }
+    } else if (year === 2003) {
+      const override = SMACKDOWN_2003_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        background = override.background;
+        thumbnail = override.thumbnail;
+      }
+    } else if (year === 2004) {
+      const override = SMACKDOWN_2004_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        background = override.background;
+        thumbnail = "https://media.themoviedb.org/t/p/w130_and_h195_face/vHAR4sewpDmrsK2PpNwsVVWyCqr.jpg";
+      }
+    } else if (year === 2005) {
+      const override = SMACKDOWN_2005_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        background = override.background;
+        thumbnail = "https://media.themoviedb.org/t/p/w130_and_h195_face/fpLNMIsdUSE1wXn7DS3QrhLdgxK.jpg";
+      }
+    }
+  } else if (show === 'RAW') {
+    if (year === 2001) {
+      const override = RAW_2001_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        if (override.background) background = override.background;
+        if (override.thumbnail) thumbnail = override.thumbnail;
+      }
+    } else if (year === 2002) {
+      const override = RAW_2002_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        if (override.background) background = override.background;
+        if (override.thumbnail) thumbnail = override.thumbnail;
+      }
+    } else if (year === 2003) {
+      const override = RAW_2003_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        if (override.background) background = override.background;
+        if (override.thumbnail) thumbnail = override.thumbnail;
+      }
+    } else if (year === 2004) {
+      const override = RAW_2004_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        if (override.background) background = override.background;
+        thumbnail = "https://media.themoviedb.org/t/p/w130_and_h195_face/9C7crJAU5Dq1wGx1Ihf89emho9J.jpg";
+      }
+    } else if (year === 2005) {
+      const override = RAW_2005_OVERRIDES[cleanDateStr];
+      if (override) {
+        title = override.title;
+        description = override.description;
+        if (override.background) background = override.background;
+        thumbnail = "https://media.themoviedb.org/t/p/w130_and_h195_face/hg8oWjvCFSzF1pgoUlyRVf7KVqL.jpg";
+      }
+    }
   }
 
   return {
@@ -822,13 +1053,37 @@ export function parseEventFromUrl(url: string): WWEEvent {
   };
 }
 
-export const INITIAL_WWE_EVENTS: WWEEvent[] = [
+const rawEventsList = [
   ...STATIC_WWE_EVENTS,
   ...RAW_ARCHIVE_URLS.map(parseEventFromUrl),
   ...YEAR_2003_URLS.map(parseEventFromUrl),
   ...YEAR_2004_URLS.map(parseEventFromUrl),
   ...YEAR_2005_URLS.map(parseEventFromUrl)
-].map(event => {
+];
+
+// Deduplicate and merge events by a normalized ID
+const uniqueEventsMap = new Map<string, WWEEvent>();
+
+for (const event of rawEventsList) {
+  let normalizedId = event.id;
+  if (normalizedId.startsWith("wwe-sd-")) {
+    normalizedId = normalizedId.replace("wwe-sd-", "wwe-smackdown-");
+  }
+
+  if (uniqueEventsMap.has(normalizedId)) {
+    const existing = uniqueEventsMap.get(normalizedId)!;
+    const merged = { ...existing };
+    if (event.video_url && event.video_url.includes("archive.org")) {
+      merged.video_url = event.video_url;
+    }
+    merged.id = normalizedId;
+    uniqueEventsMap.set(normalizedId, merged);
+  } else {
+    uniqueEventsMap.set(normalizedId, { ...event, id: normalizedId });
+  }
+}
+
+export const INITIAL_WWE_EVENTS: WWEEvent[] = Array.from(uniqueEventsMap.values()).map(event => {
   if (event.show === 'SmackDown') {
     return {
       ...event,

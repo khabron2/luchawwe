@@ -383,7 +383,7 @@ export default function App() {
           }}>
             <div className="w-12 h-12 rounded-full ring-2 ring-[#107C10] ring-offset-2 ring-offset-[#0F1115] overflow-hidden group-hover:scale-105 transition-transform duration-350 bg-[#151922] flex items-center justify-center">
               <img 
-                src="/src/assets/images/user_avatar_png_1781614754287.jpg" 
+                src="https://www.seekpng.com/png/detail/314-3149979_wwe-logo-wwf-lucha-libre-logo.png" 
                 alt="Avatar" 
                 className="w-full h-full object-cover" 
                 referrerPolicy="no-referrer"
@@ -630,14 +630,15 @@ export default function App() {
 
             <button
               onClick={() => toggleWatched(selectedEvent.id)}
-              className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all flex items-center gap-1.5 uppercase tracking-wider ${
+              className={`p-2.5 rounded-full transition-all flex items-center justify-center cursor-pointer ${
                 selectedEvent.watched 
-                  ? 'bg-[#107C10]/20 text-[#107C10] border border-[#107C10]' 
-                  : 'bg-white/5 border border-transparent text-zinc-300 hover:bg-white/10 hover:text-white'
+                  ? 'bg-[#107C10] text-white shadow-[0_0_15px_rgba(16,124,16,0.6)]' 
+                  : 'bg-white/5 border border-white/10 text-zinc-400 hover:bg-white/10 hover:text-white'
               }`}
+              title={selectedEvent.watched ? 'Marcar como no visto' : 'Marcar como visto'}
+              aria-label={selectedEvent.watched ? 'Marcar como no visto' : 'Marcar como visto'}
             >
-              <Check size={14} />
-              {selectedEvent.watched ? 'Visto' : 'Marcar Visto'}
+              <Check size={16} strokeWidth={selectedEvent.watched ? 3.5 : 2} />
             </button>
           </div>
         </div>
