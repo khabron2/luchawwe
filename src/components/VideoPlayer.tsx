@@ -237,11 +237,11 @@ export default function VideoPlayer({
               id="raw-video-player"
               src={event.video_url}
               autoPlay
+              controls
               muted={isMuted}
               onTimeUpdate={handleNativeTimeUpdate}
               onLoadedMetadata={handleNativeLoadedMetadata}
-              onClick={togglePlay}
-              className={`w-full h-full bg-black transition-all cursor-pointer ${isWidescreen ? 'scale-110' : 'max-h-[80vh] aspect-video border border-zinc-800/50 shadow-2xl rounded-lg'}`}
+              className={`w-full h-full bg-black transition-all ${isWidescreen ? 'scale-110' : 'max-h-[80vh] aspect-video border border-zinc-800/50 shadow-2xl rounded-lg'}`}
             />
           ) : (
             <iframe
@@ -297,48 +297,6 @@ export default function VideoPlayer({
 
         {/* Bottom Control Bar Timeline & Actions */}
         <div className="bg-gradient-to-t from-black via-black/95 to-transparent px-6 py-4 flex flex-col gap-3">
-          {/* Custom streaming seekhbar */}
-          <div className="flex items-center gap-3">
-            {isNativeVideo ? (
-              <span className="text-xs text-zinc-400 font-mono flex items-center gap-1.5">
-                <span>{formatTime(realCurrentTime)}</span>
-                <span className="text-[10px] text-[#107C10] font-sans font-bold bg-[#107C10]/10 px-1 py-0.5 rounded">
-                  {playbackTime.toFixed(0)}% Visto
-                </span>
-              </span>
-            ) : (
-              <span className="text-xs text-[#107C10] font-sans font-bold flex items-center gap-1">
-                <span>Porcentaje Visto:</span>
-                <span className="bg-[#107C10]/15 px-1.5 py-0.5 rounded text-white">{playbackTime.toFixed(0)}%</span>
-              </span>
-            )}
-            
-            <div 
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                const percentage = (clickX / rect.width) * 100;
-                handleSeek(percentage);
-              }}
-              className="flex-1 h-1.5 rounded-full bg-zinc-800 cursor-pointer relative group transition-all hover:h-2"
-            >
-              <div 
-                className="h-full bg-[#107C10] rounded-full relative group-hover:bg-[#159c15]" 
-                style={{ width: `${playbackTime}%` }} 
-              />
-              <div 
-                className="absolute w-3.5 h-3.5 rounded-full bg-white opacity-0 group-hover:opacity-100 shadow transition-opacity border-2 border-[#107C10]"
-                style={{ left: `calc(${playbackTime}% - 7px)`, top: '50%', transform: 'translateY(-50%)' }}
-              />
-            </div>
-            
-            {isNativeVideo ? (
-              <span className="text-xs text-zinc-400 font-mono">{formatTime(realDuration)}</span>
-            ) : (
-              <span className="text-xs text-zinc-400 font-mono">100%</span>
-            )}
-          </div>
-
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             {/* Play controls */}
             <div className="flex items-center gap-4">
@@ -378,24 +336,13 @@ export default function VideoPlayer({
                 </button>
               </div>
 
-              {/* Mute and quality selectors */}
+              {/* Mute and theater toggle */}
               <button
                 onClick={() => setIsMuted(!isMuted)}
                 className={`p-2 cursor-pointer rounded-md border ${isMuted ? 'bg-red-950/40 text-red-500 border-red-900/50' : 'bg-zinc-900 border-zinc-800 text-zinc-300'}`}
               >
                 <Volume2 size={16} />
               </button>
-
-              <select
-                value={quality}
-                onChange={(e) => setQuality(e.target.value)}
-                className="bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 py-1.5 px-2 rounded-md focus:outline-none cursor-pointer"
-              >
-                <option value="4K">Auto (4K)</option>
-                <option value="1080p">1080p Ultra</option>
-                <option value="720p">720p HD</option>
-                <option value="480p">Standard SD</option>
-              </select>
 
               <button
                 onClick={() => setIsWidescreen(!isWidescreen)}
