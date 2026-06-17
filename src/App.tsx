@@ -4,7 +4,7 @@ import {
   Play, Info, Check, Plus, Settings, Search, Clock, 
   Gamepad2, Calendar, ListFilter, RotateCcw, Sparkles, 
   ChevronLeft, ChevronRight, Tv, Award, PlayCircle, History,
-  Maximize2, Volume2, User, UserCheck, CheckCircle2
+  Maximize2, Volume2, User, UserCheck, CheckCircle2, Menu, X
 } from 'lucide-react';
 
 import { INITIAL_WWE_EVENTS, WWEEvent } from './data';
@@ -72,6 +72,7 @@ export default function App() {
   });
   
   // Quick profile stats
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [gamertag, setGamertag] = useState('WWEUniverse');
   const gamerscore = useMemo(() => events.filter(e => e.watched).length, [events]);
   const [clockStr, setClockStr] = useState('04:55 pm');
@@ -501,7 +502,8 @@ export default function App() {
         
 
         {/* TIME-WARP CHRONOLOGY QUICK FILTERS ROW */}
-        <div className="flex items-center gap-2 flex-wrap text-xs">
+        {/* Desktop Filters */}
+        <div className="hidden md:flex items-center gap-2 flex-wrap text-xs">
           <div className="flex items-center gap-1.5 bg-zinc-900/90 border border-zinc-800 px-3 py-1.5 rounded-lg text-zinc-300">
             <Calendar size={13} className="text-[#107C10]" />
             <span className="font-semibold select-none">Año:</span>
@@ -556,6 +558,102 @@ export default function App() {
               Limpiar filtros
             </button>
           )}
+        </div>
+
+        {/* Mobile Hamburger Filter Menu */}
+        <div className="md:hidden flex flex-col w-full z-20">
+          <div className="flex items-center justify-between w-full bg-zinc-900/95 border border-zinc-800 rounded-lg p-2.5">
+            <div className="flex items-center gap-2 text-zinc-300 text-xs font-semibold">
+              <span className="text-[#107C10]">●</span>
+              <span>Filtros Activos:</span>
+              <span className="text-zinc-400 font-mono text-[11px]">
+                {yearFilter !== 'ALL' ? yearFilter : 'Anual'} / {monthFilter !== 'ALL' ? monthFilter.substring(0,3) : 'Mensual'} / {showFilter !== 'ALL' ? showFilter : 'Todos'}
+              </span>
+            </div>
+            <button
+              onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
+              className="p-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-[#107C10] border border-zinc-700/80 focus:outline-none flex items-center justify-center cursor-pointer transition-colors"
+              aria-label="Toggle filters menu"
+            >
+              {isMobileFiltersOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+
+          <AnimatePresence>
+            {isMobileFiltersOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden bg-zinc-950/98 border-x border-b border-zinc-800 rounded-b-lg p-4 flex flex-col gap-3 mt-1 shadow-xl"
+              >
+                <div className="flex flex-col gap-1">
+                  <span className="text-zinc-400 text-[11px] font-bold uppercase tracking-wider">Filtrar por Año:</span>
+                  <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded text-zinc-300">
+                    <Calendar size={14} className="text-[#107C10]" />
+                    <select
+                      value={yearFilter}
+                      onChange={(e) => setYearFilter(e.target.value === 'ALL' ? 'ALL' : Number(e.target.value))}
+                      className="bg-transparent text-white font-bold ml-1 rounded py-0.5 focus:outline-none cursor-pointer border-none w-full"
+                    >
+                      <option value="ALL">Todos los años</option>
+                      {availableYears.map(y => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <span className="text-zinc-400 text-[11px] font-bold uppercase tracking-wider">Filtrar por Mes:</span>
+                  <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded text-zinc-300">
+                    <Calendar size={14} className="text-[#107C10]" />
+                    <select
+                      value={monthFilter}
+                      onChange={(e) => setMonthFilter(e.target.value)}
+                      className="bg-transparent text-white font-bold ml-1 rounded py-0.5 focus:outline-none cursor-pointer border-none w-full"
+                    >
+                      <option value="ALL">Todos los meses</option>
+                      {SPANISH_MONTHS.map(m => (
+                        <option key={m} value={m}>{m}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <span className="text-zinc-400 text-[11px] font-bold uppercase tracking-wider">Filtrar por Show:</span>
+                  <div className="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 px-3 py-2 rounded text-zinc-300">
+                    <ListFilter size={14} className="text-[#107C10]" />
+                    <select
+                      value={showFilter}
+                      onChange={(e) => setShowFilter(e.target.value as WWEEvent['show'] | 'ALL')}
+                      className="bg-transparent text-white font-bold ml-1 rounded py-0.5 focus:outline-none cursor-pointer border-none w-full"
+                    >
+                      <option value="ALL">Todo</option>
+                      <option value="RAW">RAW</option>
+                      <option value="SmackDown">SmackDown</option>
+                      <option value="PPV">PPVs Especiales</option>
+                    </select>
+                  </div>
+                </div>
+
+                {(yearFilter !== 'ALL' || showFilter !== 'ALL' || monthFilter !== 'ALL' || searchQuery) && (
+                  <button
+                    onClick={() => {
+                      resetFilters();
+                      setIsMobileFiltersOpen(false);
+                    }}
+                    className="flex items-center justify-center gap-2 w-full text-xs font-bold text-red-400 bg-red-950/30 border border-red-900/50 py-2.5 rounded hover:bg-red-950/60 transition-colors cursor-pointer"
+                  >
+                    <RotateCcw size={13} />
+                    Limpiar filtros
+                  </button>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 

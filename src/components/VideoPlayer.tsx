@@ -162,6 +162,12 @@ export default function VideoPlayer({
   };
 
   const getEmbedUrl = (url: string) => {
+    if (url.includes('vkvideo.ru') || url.includes('vk.com')) {
+      const match = url.match(/video(-?\d+)_(\d+)/);
+      if (match) {
+        return `https://vk.com/video_ext.php?oid=${match[1]}&id=${match[2]}`;
+      }
+    }
     if (url.includes('ok.ru/video/')) {
       const match = url.match(/ok\.ru\/video\/(\d+)/);
       if (match) {
