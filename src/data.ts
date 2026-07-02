@@ -807,7 +807,7 @@ export const STATIC_WWE_EVENTS: WWEEvent[] = [
     duration: "3h 00m",
     thumbnail: "https://www.themoviedb.org/t/p/w600_and_h900_face/pHxVoDAaEnS9u2oTYJnQcNaNXkv.jpg",
     background: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-    video_url: "",
+    video_url: "https://vkvideo.ru/video-192312565_456239073",
     description: "WWE SummerSlam 2004 es un espectacular e histórico evento donde Randy Orton hace historia al derrotar a Chris Benoit por el Campeonato Mundial de Peso Completo, convirtiéndose en el campeón mundial más joven en la historia de la WWE. Además, John Bradshaw Layfield (JBL) defiende el Campeonato de la WWE ante un amenazante Undertaker, y Kurt Angle se enfrenta a Eddie Guerrero en una esperada e intensa revancha técnica.",
     watched: false
   },
@@ -919,7 +919,7 @@ export const STATIC_WWE_EVENTS: WWEEvent[] = [
     duration: "4h 00m",
     thumbnail: "https://www.themoviedb.org/t/p/w600_and_h900_face/4rQOid4Qc4nsZ5WS3WJ5DaxLW0z.jpg",
     background: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-    video_url: "",
+    video_url: "https://vkvideo.ru/video-192312565_456239088",
     description: "WWE WrestleMania 21 es la espectacular vigesimoprimera edición del magno evento de la WWE, celebrado en Los Ángeles, California, bajo la icónica temática de Hollywood. Consagra el ascenso definitivo de las dos superestrellas de la nueva era: John Cena, quien derrota a John Bradshaw Layfield (JBL) para ganar el Campeonato de la WWE, y Batista, quien derrota a Triple H en el evento estelar para capturar el Campeonato Mundial de Peso Completo. Además, el show presenta el primer e histórico combate de escaleras Money in the Bank y una aclamada obra de arte técnica de ensueño entre Shawn Michaels y Kurt Angle.",
     watched: false
   }

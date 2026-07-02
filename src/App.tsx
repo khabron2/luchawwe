@@ -350,155 +350,171 @@ export default function App() {
     <div className="relative min-h-screen bg-transparent text-white selection:bg-[#107C10] flex flex-col font-sans transition-colors duration-1000 overflow-x-hidden selection:text-white">
       
       {/* 1. CINEMATIC RADIAL OVERLAY & KEN BURNS BACKDROP */}
-      <div className="absolute top-0 left-0 w-full h-[620px] -z-10 overflow-hidden pointer-events-none">
-        <AnimatePresence mode="popLayout">
-          {selectedEvent && (
-            <motion.div
-              key={selectedEvent.id}
-              initial={{ opacity: 0, scale: 1.15 }}
-              animate={{ opacity: 0.55, scale: 1.05 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ 
-                backgroundImage: `url(${selectedEvent.background})`
-              }}
-            />
-          )}
-        </AnimatePresence>
-        
-        {/* Gradients to fade to dark color scheme */}
-        <div className="absolute inset-0 bg-radial-at-t from-[#151922]/0 via-[#0b0c0f]/80 to-[#0b0c0f]" />
-        <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-[#0b0c0f] to-transparent" />
-        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/55 to-transparent" />
-      </div>
+      {!playingId && (
+        <div className="absolute top-0 left-0 w-full h-[620px] -z-10 overflow-hidden pointer-events-none">
+          <AnimatePresence mode="popLayout">
+            {selectedEvent && (
+              <motion.div
+                key={selectedEvent.id}
+                initial={{ opacity: 0, scale: 1.15 }}
+                animate={{ opacity: 0.55, scale: 1.05 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ 
+                  backgroundImage: `url(${selectedEvent.background})`
+                }}
+              />
+            )}
+          </AnimatePresence>
+          
+          {/* Gradients to fade to dark color scheme */}
+          <div className="absolute inset-0 bg-radial-at-t from-[#151922]/0 via-[#0b0c0f]/80 to-[#0b0c0f]" />
+          <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-[#0b0c0f] to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/55 to-transparent" />
+        </div>
+      )}
 
       {/* 2. MAIN XBOX HEADER BAR */}
-      <header className="relative w-full z-20 px-6 py-4 flex items-center justify-between border-b border-white/5 bg-black/25 backdrop-blur-md">
-        
-        {/* Left Side: Gamer Info */}
-        <div className="flex items-center gap-4">
-          <div className="relative group cursor-pointer" onClick={() => {
-            const newName = prompt("Ingresa tu Gamertag:", gamertag);
-            if (newName) setGamertag(newName);
-          }}>
-            <div className="w-12 h-12 rounded-full ring-2 ring-[#107C10] ring-offset-2 ring-offset-[#0F1115] overflow-hidden group-hover:scale-105 transition-transform duration-350 bg-[#151922] flex items-center justify-center">
-              <img 
-                src="https://www.seekpng.com/png/detail/314-3149979_wwe-logo-wwf-lucha-libre-logo.png" 
-                alt="Avatar" 
-                className="w-full h-full object-cover" 
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="absolute -bottom-1 -right-1 bg-[#107C10] w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-[#0F1115]">
-              <span className="text-[7px] font-bold">X</span>
-            </div>
-          </div>
-
-          <div className="text-left">
-            <div className="flex items-center gap-2">
-              <span id="gamertag-display" className="font-bold text-sm tracking-tight hover:text-[#107C10] transition-colors cursor-pointer" onClick={() => {
-                const newName = prompt("Ingresa tu Gamertag:", gamertag);
-                if (newName) setGamertag(newName);
-              }}>
-                {gamertag}
-              </span>
-              <span className="text-[9px] bg-zinc-800 text-zinc-300 px-1 py-0.5 rounded font-bold font-mono tracking-wider">ULTIMATE</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-xs text-zinc-400 mt-0.5">
-              <span className="text-[#107C10] font-bold">G</span>
-              <span className="font-bold font-mono text-zinc-300">{gamerscore.toLocaleString()}</span>
-              <span className="text-zinc-600">•</span>
-              <span className="text-[#107C10] flex items-center gap-1">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#107C10] animate-pulse"></span>
-                LIVE
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Center: System Quick Nav */}
-        <div className="hidden lg:flex items-center gap-6 text-sm font-semibold text-zinc-400">
-          <button 
-            onClick={() => resetFilters()} 
-            className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
-              showFilter === 'ALL' && yearFilter === 'ALL' 
-                ? 'text-white border-[#107C10] font-bold opacity-100' 
-                : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
-            }`}
-          >
-            Inicio Xbox
-          </button>
-          <button 
-            onClick={() => setShowFilter('PPV')} 
-            className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
-              showFilter === 'PPV' 
-                ? 'text-white border-[#107C10] font-bold opacity-100' 
-                : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
-            }`}
-          >
-            Eventos PPV
-          </button>
-          <button 
-            onClick={() => setShowFilter('RAW')} 
-            className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
-              showFilter === 'RAW' 
-                ? 'text-white border-[#107C10] font-bold opacity-100' 
-                : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
-            }`}
-          >
-            RAW
-          </button>
-          <button 
-            onClick={() => setShowFilter('SmackDown')} 
-            className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
-              showFilter === 'SmackDown' 
-                ? 'text-white border-[#107C10] font-bold opacity-100' 
-                : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
-            }`}
-          >
-            SmackDown
-          </button>
-        </div>
-
-        {/* Right Side: Indicators/Time */}
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
-            <input
-              type="text"
-              placeholder="Buscar luchas..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-zinc-900/80 border border-zinc-800 text-xs px-3 pl-8 py-2 rounded-full focus:outline-none focus:border-[#107C10] w-36 md:w-56 transition-all focus:w-64"
-            />
-            {searchQuery && (
-              <button 
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white text-xs"
-              >
-                x
-              </button>
-            )}
-          </div>
-
-          <button
-            onClick={() => setIsAdminOpen(true)}
-            className="p-2 cursor-pointer bg-zinc-900 border border-zinc-800 rounded-full hover:border-[#107C10] hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all"
-            title="Agregar Contenido (Xbox Settings)"
-          >
-            <Settings size={16} />
-          </button>
+      {!playingId && (
+        <header className="relative w-full z-20 px-6 py-4 flex items-center justify-between border-b border-white/5 bg-black/25 backdrop-blur-md">
           
-          <div className="flex items-center gap-1.5 text-zinc-400 font-mono text-sm border-l border-zinc-800 pl-4">
-            <span className="text-[10px]">🔋</span>
-            <span className="text-zinc-200 font-bold">{clockStr}</span>
-          </div>
-        </div>
-      </header>
+          {/* Left Side: Gamer Info */}
+          <div className="flex items-center gap-4">
+            <div className="relative group cursor-pointer" onClick={() => {
+              const newName = prompt("Ingresa tu Gamertag:", gamertag);
+              if (newName) setGamertag(newName);
+            }}>
+              <div className="w-12 h-12 rounded-full ring-2 ring-[#107C10] ring-offset-2 ring-offset-[#0F1115] overflow-hidden group-hover:scale-105 transition-transform duration-350 bg-[#151922] flex items-center justify-center">
+                <img 
+                  src="https://www.seekpng.com/png/detail/314-3149979_wwe-logo-wwf-lucha-libre-logo.png" 
+                  alt="Avatar" 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-1 -right-1 bg-[#107C10] w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-[#0F1115]">
+                <span className="text-[7px] font-bold">X</span>
+              </div>
+            </div>
 
-      {/* QUICK FLOATING GREETING BANNER */}
-      <div className="px-6 pt-5 flex flex-wrap items-center justify-between gap-4 z-10">
+            <div className="text-left">
+              <div className="flex items-center gap-2">
+                <span id="gamertag-display" className="font-bold text-sm tracking-tight hover:text-[#107C10] transition-colors cursor-pointer" onClick={() => {
+                  const newName = prompt("Ingresa tu Gamertag:", gamertag);
+                  if (newName) setGamertag(newName);
+                }}>
+                  {gamertag}
+                </span>
+                <span className="text-[9px] bg-zinc-800 text-zinc-300 px-1 py-0.5 rounded font-bold font-mono tracking-wider">ULTIMATE</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-zinc-400 mt-0.5">
+                <span className="text-[#107C10] font-bold">G</span>
+                <span className="font-bold font-mono text-zinc-300">{gamerscore.toLocaleString()}</span>
+                <span className="text-zinc-600">•</span>
+                <span className="text-[#107C10] flex items-center gap-1">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#107C10] animate-pulse"></span>
+                  LIVE
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Center: System Quick Nav */}
+          <div className="hidden lg:flex items-center gap-6 text-sm font-semibold text-zinc-400">
+            <button 
+              onClick={() => resetFilters()} 
+              className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
+                showFilter === 'ALL' && yearFilter === 'ALL' 
+                  ? 'text-white border-[#107C10] font-bold opacity-100' 
+                  : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
+              }`}
+            >
+              Inicio Xbox
+            </button>
+            <button 
+              onClick={() => setShowFilter('PPV')} 
+              className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
+                showFilter === 'PPV' 
+                  ? 'text-white border-[#107C10] font-bold opacity-100' 
+                  : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
+              }`}
+            >
+              Eventos PPV
+            </button>
+            <button 
+              onClick={() => setShowFilter('RAW')} 
+              className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
+                showFilter === 'RAW' 
+                  ? 'text-white border-[#107C10] font-bold opacity-100' 
+                  : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
+              }`}
+            >
+              RAW
+            </button>
+            <button 
+              onClick={() => setShowFilter('SmackDown')} 
+              className={`cursor-pointer uppercase tracking-wider text-xs pb-1 transition-all outline-none border-b-2 ${
+                showFilter === 'SmackDown' 
+                  ? 'text-white border-[#107C10] font-bold opacity-100' 
+                  : 'border-transparent opacity-60 hover:opacity-100 hover:text-white'
+              }`}
+            >
+              SmackDown
+            </button>
+          </div>
+
+          {/* Right Side: Indicators/Time */}
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={14} />
+              <input
+                type="text"
+                placeholder="Buscar luchas..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-zinc-900/80 border border-zinc-800 text-xs px-3 pl-8 py-2 rounded-full focus:outline-none focus:border-[#107C10] w-36 md:w-56 transition-all focus:w-64"
+              />
+              {searchQuery && (
+                <button 
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white text-xs"
+                >
+                  x
+                </button>
+              )}
+            </div>
+
+            <button
+              onClick={() => setIsAdminOpen(true)}
+              className="p-2 cursor-pointer bg-zinc-900 border border-zinc-800 rounded-full hover:border-[#107C10] hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all"
+              title="Agregar Contenido (Xbox Settings)"
+            >
+              <Settings size={16} />
+            </button>
+            
+            <div className="flex items-center gap-1.5 text-zinc-400 font-mono text-sm border-l border-zinc-800 pl-4">
+              <span className="text-[10px]">🔋</span>
+              <span className="text-zinc-200 font-bold">{clockStr}</span>
+            </div>
+          </div>
+        </header>
+      )}
+
+      {playingId ? (
+        <VideoPlayer
+          event={events.find(e => e.id === playingId) || selectedEvent}
+          nextEvent={nextChronoEvent}
+          onClose={() => setPlayingId(null)}
+          onNextEvent={handleNextChronological}
+          onPrevEvent={handlePrevChronological}
+          hasPrevEvent={!!prevChronoEvent}
+          onMarkAsWatched={toggleWatched}
+        />
+      ) : (
+        <>
+          {/* QUICK FLOATING GREETING BANNER */}
+          <div className="px-6 pt-5 flex flex-wrap items-center justify-between gap-4 z-10">
         
 
         {/* TIME-WARP CHRONOLOGY QUICK FILTERS ROW */}
@@ -1148,18 +1164,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* 7. FULLSCREEN VIDEO PLAYER OVERLAY */}
-      {playingId && (
-        <VideoPlayer
-          event={events.find(e => e.id === playingId) || selectedEvent}
-          nextEvent={nextChronoEvent}
-          onClose={() => setPlayingId(null)}
-          onNextEvent={handleNextChronological}
-          onPrevEvent={handlePrevChronological}
-          hasPrevEvent={!!prevChronoEvent}
-          onMarkAsWatched={toggleWatched}
-        />
-      )}
+
 
       {/* 8. ADMIN DRAWER (AGREGAR CONTENIDO) */}
       <AdminPanel
@@ -1199,6 +1204,8 @@ export default function App() {
           </p>
         </div>
       </footer>
+        </>
+      )}
     </div>
   );
 }
