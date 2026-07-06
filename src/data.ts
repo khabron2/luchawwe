@@ -183,7 +183,7 @@ export const STATIC_WWE_EVENTS: WWEEvent[] = [
     duration: "2h 50m",
     thumbnail: "https://static.wikia.nocookie.net/prowrestling/images/1/1b/Judgmentday01.jpg/revision/latest?cb=20090928132347",
     background: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
-    video_url: "https://archive.org/download/05.-wwf-judgment-day-2001/05.%20WWF%20Judgment%20Day%20%282001%29.mp4",
+    video_url: "https://ok.ru/video/3493227596386",
     description: "WWE Judgment Day 2001 presenta el épico combate sin descalificación por el Campeonato de la WWF entre Stone Cold Steve Austin y The Undertaker, además del temible 'Chain Match' por el Campeonato Intercontinental entre Triple H y Kane.",
     watched: false
   },
