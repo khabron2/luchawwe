@@ -46,9 +46,7 @@ export default function App() {
     return events[0]?.id || '';
   });
 
-  const [playingId, setPlayingId] = useState<string | null>(() => {
-    return localStorage.getItem('wwe-chrono-playing-id') || null;
-  });
+  const [playingId, setPlayingId] = useState<string | null>(null);
 
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
